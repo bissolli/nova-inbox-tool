@@ -1,0 +1,41 @@
+{
+    "name": "bissolli/nova-inbox-tool",
+    "description": "Laravel Nova Inbox Tool.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "notification",
+        "inbox",
+        "message",
+        "messaging"
+    ],
+    "homepage": "https://github.com/bissolli/nova-inbox-tool",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "authors": [
+        {
+            "name": "Gustavo Bissolli",
+            "email": "gustavo.bissolli@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bissolli\\NovaInboxTool\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bissolli\\NovaInboxTool\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
