@@ -2,10 +2,12 @@
 
 namespace Bissolli\NovaInboxTool\Http\Controllers;
 
+use Bissolli\NovaInboxTool\Models\MessageThread;
+
 class MessageThreadController extends Controller
 {
-    public function index()
+    public function show(MessageThread $thread)
     {
-        return [ 'Hi thread' ];
+        return $thread->load('messages.sender', 'member');
     }
 }

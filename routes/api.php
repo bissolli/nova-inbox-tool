@@ -20,16 +20,16 @@ Route::group(['namespace' => '\Bissolli\NovaInboxTool\Http\Controllers'], functi
     Route::get('inbox', 'InboxController@index');
 
     // Thread routes
-    Route::get('messages-threads', 'MessageThreadController@search');
-    Route::post('messages-threads', 'MessageThreadController@store');
-    Route::get('messages-threads/{message-thread}', 'MessageThreadController@show');
-    Route::delete('messages-threads/{message-thread}', 'MessageThreadController@destroy');
+    //Route::get('messages-threads', 'MessageThreadController@search');
+    //Route::post('messages-threads', 'MessageThreadController@store');
+    Route::get('message-threads/{thread}', 'MessageThreadController@show');
+    //Route::delete('messages-threads/{message-thread}', 'MessageThreadController@destroy');
 
     // Message routes
-    Route::get('messages', 'MessageController@search');
-    Route::post('messages', 'MessageController@store');
-    Route::get('messages/{message}', 'MessageController@show');
-    Route::put('messages/{message}', 'MessageController@update');
-    Route::delete('messages/{message}', 'MessageController@destroy');
+    //Route::get('messages', 'MessageController@search');
+    //Route::post('messages', 'MessageController@store');
+    //Route::get('messages/{message}', 'MessageController@show');
+    //Route::put('messages/{message}', 'MessageController@update');
+    //Route::delete('messages/{message}', 'MessageController@destroy');
 
 });

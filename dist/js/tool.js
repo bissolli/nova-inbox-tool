@@ -60,84 +60,49 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1);
-module.exports = __webpack_require__(9);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-Nova.booting(function (Vue, router) {
-    router.addRoutes([{
-        name: 'nova-inbox-tool',
-        path: '/nova-inbox-tool',
-        component: __webpack_require__(2)
-    }]
-    // {
-    //     name: 'nova-inbox-tool',
-    //     path: '/nova-inbox-tool-test',
-    //     component: require('./components/InboxThreads'),
-    // },
-    );
-});
-
-/***/ }),
+/* 0 */,
+/* 1 */,
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(4)
-/* template */
-var __vue_template__ = __webpack_require__(8)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/Inbox.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4978e82b", Component.options)
-  } else {
-    hotAPI.reload("data-v-4978e82b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
+__webpack_require__(3);
+module.exports = __webpack_require__(21);
 
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Nova.booting(function (Vue, router) {
+    router.addRoutes([{
+        name: 'nova-inbox-tool.inbox',
+        path: '/nova-inbox-tool',
+        component: __webpack_require__(26)
+    }, {
+        name: 'nova-inbox-tool.threads.show',
+        path: '/nova-inbox-tool/threads/:id',
+        component: __webpack_require__(32)
+    }]);
+});
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -246,212 +211,15 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    filters: {
-        date: function date(value, format) {
-            return moment(value).format(format);
-        },
-        fromNow: function fromNow(value) {
-            return moment(value).fromNow();
-        }
-    },
-    data: function data() {
-        return {
-            initialLoading: true,
-            loading: false,
-            threads: []
-        };
-    },
-    computed: {
-        shouldShowToolbar: function shouldShowToolbar() {
-            return true;
-        }
-    },
-    created: function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return this.getThreads();
-
-                        case 2:
-                            this.initialLoading = false;
-
-                        case 3:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, this);
-        }));
-
-        function created() {
-            return _ref.apply(this, arguments);
-        }
-
-        return created;
-    }(),
-
-    methods: {
-        getThreads: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var response;
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return Nova.request().get('/nova-vendor/nova-inbox-tool/inbox');
-
-                            case 2:
-                                response = _context2.sent;
-
-                                this.threads = response.data;
-
-                            case 4:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function getThreads() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return getThreads;
-        }()
-    }
-});
-
-/***/ }),
-/* 5 */
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(18);
 
 
 /***/ }),
-/* 6 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -476,7 +244,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(19);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -492,7 +260,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 7 */
+/* 19 */
 /***/ (function(module, exports) {
 
 /**
@@ -1225,7 +993,251 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 8 */
+/* 20 */,
+/* 21 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(27)
+/* template */
+var __vue_template__ = __webpack_require__(28)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/inbox/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c2fa6b24", Component.options)
+  } else {
+    hotAPI.reload("data-v-c2fa6b24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LineItem__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LineItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__LineItem__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        NitLineItem: __WEBPACK_IMPORTED_MODULE_1__LineItem___default.a
+    },
+    data: function data() {
+        return {
+            initialLoading: true,
+            loading: false,
+            threads: []
+        };
+    },
+    computed: {
+        shouldShowToolbar: function shouldShowToolbar() {
+            return true;
+        }
+    },
+    created: function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return this.getThreads();
+
+                        case 2:
+                            this.initialLoading = false;
+
+                        case 3:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, this);
+        }));
+
+        function created() {
+            return _ref.apply(this, arguments);
+        }
+
+        return created;
+    }(),
+
+    methods: {
+        getThreads: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return Nova.request().get('/nova-vendor/nova-inbox-tool/inbox');
+
+                            case 2:
+                                response = _context2.sent;
+
+                                this.threads = response.data;
+
+                            case 4:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function getThreads() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return getThreads;
+        }()
+    }
+});
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1415,75 +1427,29 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _c("th", { staticClass: "`text-left" }, [
+                          _c("th", { staticClass: "text-left" }, [
                             _vm._v(
                               "\n                        Subject\n                    "
                             )
                           ]),
                           _vm._v(" "),
-                          _c("th", { staticClass: "`text-left" }, [
+                          _c("th", { staticClass: "text-left" }, [
                             _vm._v(
                               "\n                        Updated at\n                    "
                             )
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("th")
                         ])
                       ]),
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.threads, function(thread) {
-                          return _c("tr", { key: thread.id }, [
-                            _c("td", { staticClass: "w-16 text-center" }, [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(thread.id) +
-                                  "\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "small",
-                                {
-                                  staticClass:
-                                    "bg-danger font-bold px-2 mr-1 rounded-full text-white uppercase"
-                                },
-                                [_vm._v(_vm._s(thread.id))]
-                              ),
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(thread.member.name) +
-                                  "\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(thread.subject) +
-                                  "\n                        "
-                              ),
-                              _c(
-                                "small",
-                                { staticClass: "block font-thin-3" },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("date")(thread.created_at, "LLLL")
-                                    )
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "text-center" }, [
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(_vm._f("fromNow")(thread.updated_at)) +
-                                  "\n                    "
-                              )
-                            ])
-                          ])
+                        _vm._l(_vm.threads, function(item) {
+                          return _c("nit-line-item", {
+                            key: item.id,
+                            attrs: { item: item }
+                          })
                         })
                       )
                     ]
@@ -1503,15 +1469,493 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4978e82b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-c2fa6b24", module.exports)
   }
 }
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(30)
+/* template */
+var __vue_template__ = __webpack_require__(31)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/inbox/LineItem.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-16d175bb", Component.options)
+  } else {
+    hotAPI.reload("data-v-16d175bb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    filters: {
+        date: function date(value, format) {
+            return moment(value).format(format);
+        },
+        fromNow: function fromNow(value) {
+            return moment(value).fromNow();
+        }
+    },
+    props: {
+        item: {
+            type: Object,
+            required: true
+        }
+    },
+    computed: {
+        unreadMessages: function unreadMessages() {
+            var unread = 0;
+            this.item.messages.map(function (obj) {
+                if (!obj.seen_at) unread++;
+            });
+            return unread;
+        }
+    }
+});
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", { class: { "thread--unread-line": _vm.unreadMessages } }, [
+    _c("td", { staticClass: "w-16 text-center" }, [
+      _vm._v("\n        " + _vm._s(_vm.item.id) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _vm.unreadMessages
+        ? _c(
+            "small",
+            {
+              staticClass:
+                "bg-danger font-bold px-2 mr-1 rounded-full text-white uppercase"
+            },
+            [_vm._v(_vm._s(_vm.unreadMessages))]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("span", { staticClass: "thread--member" }, [
+        _vm._v("\n            " + _vm._s(_vm.item.member.name) + "\n        ")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "thread--subject" }, [
+        _vm._v("\n            " + _vm._s(_vm.item.subject) + "\n        ")
+      ]),
+      _vm._v(" "),
+      _c("small", { staticClass: "block font-thin-3" }, [
+        _vm._v(_vm._s(_vm._f("date")(_vm.item.created_at, "LLLL")))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", { staticClass: "text-center" }, [
+      _c("span", { staticClass: "thread--las-update" }, [
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm._f("fromNow")(_vm.item.updated_at)) +
+            "\n        "
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "td",
+      { staticClass: "text-center" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "cursor-pointer text-70 hover:text-primary mr-3",
+            attrs: {
+              to: {
+                name: "nova-inbox-tool.threads.show",
+                params: { id: _vm.item.id }
+              },
+              title: _vm.__("View")
+            }
+          },
+          [
+            _c("icon", {
+              attrs: {
+                type: "view",
+                width: "22",
+                height: "18",
+                "view-box": "0 0 22 16"
+              }
+            })
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16d175bb", module.exports)
+  }
+}
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(33)
+/* template */
+var __vue_template__ = __webpack_require__(34)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/thread/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-372a0db8", Component.options)
+  } else {
+    hotAPI.reload("data-v-372a0db8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    filters: {
+        fromNow: function fromNow(value) {
+            return moment(value).fromNow();
+        }
+    },
+    data: function data() {
+        return {
+            initialLoading: false,
+            loading: false,
+            thread: null
+        };
+    },
+    computed: {
+        shouldShowToolbar: function shouldShowToolbar() {
+            return true;
+        }
+    },
+    created: function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return this.getThread();
+
+                        case 2:
+                            this.initialLoading = false;
+
+                        case 3:
+                        case "end":
+                            return _context.stop();
+                    }
+                }
+            }, _callee, this);
+        }));
+
+        function created() {
+            return _ref.apply(this, arguments);
+        }
+
+        return created;
+    }(),
+
+    methods: {
+        getThread: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return Nova.request().get("/nova-vendor/nova-inbox-tool/message-threads/" + this.$route.params.id);
+
+                            case 2:
+                                response = _context2.sent;
+
+                                this.thread = response.data;
+
+                            case 4:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function getThread() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return getThread;
+        }()
+    }
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "loading-view",
+    { attrs: { loading: _vm.initialLoading } },
+    [
+      _c("heading", { staticClass: "mb-3" }, [
+        _vm._v("Thread ID: " + _vm._s(_vm.$route.params.id))
+      ]),
+      _vm._v(" "),
+      _vm.thread
+        ? _c("card", { staticClass: "p-4" }, [
+            _c("div", { staticClass: "thread-details" }, [
+              _c(
+                "div",
+                { staticClass: "thread-details--subject" },
+                [
+                  _c("srong", [_vm._v("Subject")]),
+                  _vm._v(": " + _vm._s(_vm.thread.subject) + "\n            ")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "thread-details--member" },
+                [
+                  _vm._v("\n                Posted by "),
+                  _c("srong", [_vm._v(_vm._s(_vm.thread.member.name))]),
+                  _vm._v(" on "),
+                  _c("strong", [
+                    _vm._v(_vm._s(_vm._f("fromNow")(_vm.thread.created_at)))
+                  ])
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "thread-messages" },
+              _vm._l(_vm.thread.messages, function(message) {
+                return _c(
+                  "div",
+                  { key: message.id, staticClass: "t-message" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "t-message--sender" },
+                      [
+                        _vm._v("\n                    Sent by "),
+                        _c("srong", [_vm._v(_vm._s(message.sender.name))]),
+                        _vm._v(" on "),
+                        _c("strong", [
+                          _vm._v(_vm._s(_vm._f("fromNow")(message.created_at)))
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "t-message--body" }, [
+                      _c("div", {
+                        domProps: { innerHTML: _vm._s(message.body) }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("hr")
+                  ]
+                )
+              })
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "thread-reply" }, [
+              _c("h4", [_vm._v("reply feature")])
+            ])
+          ])
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-372a0db8", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

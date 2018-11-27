@@ -1,14 +1,14 @@
 Nova.booting((Vue, router) => {
     router.addRoutes([
         {
-            name: 'nova-inbox-tool',
+            name: 'nova-inbox-tool.inbox',
             path: '/nova-inbox-tool',
-            component: require('./components/Inbox'),
+            component: require('./components/inbox/Index'),
         },
-        // {
-        //     name: 'nova-inbox-tool',
-        //     path: '/nova-inbox-tool-test',
-        //     component: require('./components/InboxThreads'),
-        // },
+        {
+            name: 'nova-inbox-tool.threads.show',
+            path: '/nova-inbox-tool/threads/:id',
+            component: require('./components/thread/Index'),
+        }
     ])
 })
