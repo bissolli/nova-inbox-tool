@@ -6,9 +6,7 @@
                 <div class="font-bold text-xl mb-2">{{ thread.subject }}</div>
                 <div v-html="thread.body"></div>
                 <div class="flex items-center mt-4">
-                    <span class="bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12">
-                        {{ thread.member.name | nitInitials }}
-                    </span>
+                    <nit-avatar :name="thread.owner.name" :model="thread.owner_type" />
                     <div class="text-sm">
                         <p class="text-black leading-none">{{ thread.member.name }}</p>
                         <p class="text-grey-dark">{{ thread.created_at | nitFromNow }}</p>
@@ -24,9 +22,11 @@
 <script>
     import NitMessage from './Message'
     import NitReply from './Reply'
+    import NitAvatar from '../Avatar'
 
     export default {
         components: {
+            NitAvatar,
             NitMessage,
             NitReply
         },

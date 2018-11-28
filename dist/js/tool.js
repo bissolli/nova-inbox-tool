@@ -1725,6 +1725,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reply__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reply___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Reply__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Avatar__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Avatar__);
 
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -1750,14 +1752,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
+        NitAvatar: __WEBPACK_IMPORTED_MODULE_3__Avatar___default.a,
         NitMessage: __WEBPACK_IMPORTED_MODULE_1__Message___default.a,
         NitReply: __WEBPACK_IMPORTED_MODULE_2__Reply___default.a
     },
@@ -1874,36 +1876,31 @@ var render = function() {
                     domProps: { innerHTML: _vm._s(_vm.thread.body) }
                   }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "flex items-center mt-4" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12"
-                      },
-                      [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(
-                              _vm._f("nitInitials")(_vm.thread.member.name)
-                            ) +
-                            "\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-sm" }, [
-                      _c("p", { staticClass: "text-black leading-none" }, [
-                        _vm._v(_vm._s(_vm.thread.member.name))
-                      ]),
+                  _c(
+                    "div",
+                    { staticClass: "flex items-center mt-4" },
+                    [
+                      _c("nit-avatar", {
+                        attrs: {
+                          name: _vm.thread.owner.name,
+                          model: _vm.thread.owner_type
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("p", { staticClass: "text-grey-dark" }, [
-                        _vm._v(
-                          _vm._s(_vm._f("nitFromNow")(_vm.thread.created_at))
-                        )
+                      _c("div", { staticClass: "text-sm" }, [
+                        _c("p", { staticClass: "text-black leading-none" }, [
+                          _vm._v(_vm._s(_vm.thread.member.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "text-grey-dark" }, [
+                          _vm._v(
+                            _vm._s(_vm._f("nitFromNow")(_vm.thread.created_at))
+                          )
+                        ])
                       ])
-                    ])
-                  ])
+                    ],
+                    1
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -2047,7 +2044,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 response = _context.sent;
 
 
-                                this.$toasted.show(this.__('The message was created!'), { type: 'success' });
+                                this.$toasted.show(this.__('The reply was sent!'), { type: 'success' });
 
                                 this.$emit('messageCreated', response.data);
 
@@ -2226,8 +2223,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Avatar__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Avatar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Avatar__);
 //
 //
 //
@@ -2243,7 +2240,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        NitAvatar: __WEBPACK_IMPORTED_MODULE_0__Avatar___default.a
+    },
     props: {
         item: {
             type: Object,
@@ -2264,22 +2266,15 @@ var render = function() {
     "div",
     { staticClass: "flex items-top ml-8 py-8 border-b border-40" },
     [
-      _c("div", [
-        _c(
-          "span",
-          {
-            staticClass:
-              "bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12"
-          },
-          [
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm._f("nitInitials")(_vm.item.sender.name)) +
-                "\n        "
-            )
-          ]
-        )
-      ]),
+      _c(
+        "div",
+        [
+          _c("nit-avatar", {
+            attrs: { name: _vm.item.sender.name, model: _vm.item.sender_type }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("div", {}, [
         _c("div", {
@@ -2334,6 +2329,113 @@ var nitInitials = function nitInitials(value) {
     initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
     return initials.trim();
 };
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(48)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Avatar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62781b04", Component.options)
+  } else {
+    hotAPI.reload("data-v-62781b04", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+        model: {
+            type: String,
+            required: true
+        }
+    },
+    computed: {
+        color: function color() {
+            return this.model === Nova.config.models['admin'] ? 'bg-50 border-70 text-80' : 'bg-primary-50% border-primary-dark text-primary-dark';
+        }
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "span",
+    {
+      staticClass:
+        "flex h-12 items-center border justify-center mr-4 rounded-full w-12 font-black",
+      class: _vm.color
+    },
+    [_vm._v("\n    " + _vm._s(_vm._f("nitInitials")(_vm.name)) + "\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62781b04", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

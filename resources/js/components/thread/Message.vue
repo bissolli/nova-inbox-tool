@@ -1,9 +1,7 @@
 <template>
     <div class="flex items-top ml-8 py-8 border-b border-40">
         <div>
-            <span class="bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12">
-                {{ item.sender.name | nitInitials }}
-            </span>
+            <nit-avatar :name="item.sender.name" :model="item.sender_type" />
         </div>
         <div class="">
             <div class="t-message--body" v-html="item.body"></div>
@@ -15,7 +13,12 @@
 </template>
 
 <script>
+    import NitAvatar from '../Avatar'
+
     export default {
+        components: {
+            NitAvatar
+        },
         props: {
             item: {
                 type: Object,

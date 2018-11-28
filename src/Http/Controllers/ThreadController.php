@@ -8,6 +8,6 @@ class ThreadController extends Controller
 {
     public function show(Thread $thread)
     {
-        return $thread->load('messages.sender', 'member');
+        return $thread->load('messages.sender', 'member', 'owner', 'closedBy');
     }
 }

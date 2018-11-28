@@ -33,6 +33,7 @@ class ToolServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event) {
             Nova::provideToScript([
                 'user' => $event->request->user()->toArray(),
+                'models' => config('novainbox.models')
             ]);
         });
     }

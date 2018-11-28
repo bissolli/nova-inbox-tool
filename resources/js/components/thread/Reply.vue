@@ -39,7 +39,7 @@
                     )
 
                     this.$toasted.show(
-                        this.__('The message was created!'),
+                        this.__('The reply was sent!'),
                         { type: 'success' }
                     )
 
