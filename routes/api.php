@@ -25,6 +25,8 @@ Route::group(['namespace' => '\Bissolli\NovaInboxTool\Http\Controllers'], functi
     Route::get('message-threads/{thread}', 'MessageThreadController@show');
     //Route::delete('messages-threads/{message-thread}', 'MessageThreadController@destroy');
 
+    Route::post('message-threads/{thread}/messages', 'MessageController@store');
+
     // Message routes
     //Route::get('messages', 'MessageController@search');
     //Route::post('messages', 'MessageController@store');

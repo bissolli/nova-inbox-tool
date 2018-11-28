@@ -15,8 +15,12 @@ class CreateMessageThreadsTable extends Migration
     {
         Schema::create(config('novainbox.tables.message_threads'), function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('member_id');
+            $table->unsignedInteger('sender_id');
+            $table->string('sender_type');
+            $table->unsignedInteger('sender_id');
+            $table->string('sender_type');
             $table->string('subject');
+            $table->longText('body');
             $table->timestamps();
         });
     }

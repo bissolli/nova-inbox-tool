@@ -13,4 +13,5 @@ return [
     ],
 
     'user_model' => \App\User::class,
+    'admin_model' => \App\User::class,
 ];

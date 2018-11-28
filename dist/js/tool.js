@@ -78,7 +78,16 @@ module.exports = __webpack_require__(21);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__filters_js__ = __webpack_require__(45);
+
+
 Nova.booting(function (Vue, router) {
+
+    Vue.filter('nitDate', __WEBPACK_IMPORTED_MODULE_0__filters_js__["a" /* nitDate */]);
+    Vue.filter('nitFromNow', __WEBPACK_IMPORTED_MODULE_0__filters_js__["b" /* nitFromNow */]);
+    Vue.filter('nitInitials', __WEBPACK_IMPORTED_MODULE_0__filters_js__["c" /* nitInitials */]);
+
     router.addRoutes([{
         name: 'nova-inbox-tool.inbox',
         path: '/nova-inbox-tool',
@@ -1569,14 +1578,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    filters: {
-        date: function date(value, format) {
-            return moment(value).format(format);
-        },
-        fromNow: function fromNow(value) {
-            return moment(value).fromNow();
-        }
-    },
     props: {
         item: {
             type: Object,
@@ -1630,7 +1631,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("small", { staticClass: "block font-thin-3" }, [
-        _vm._v(_vm._s(_vm._f("date")(_vm.item.created_at, "LLLL")))
+        _vm._v(_vm._s(_vm._f("nitDate")(_vm.item.created_at, "LLLL")))
       ])
     ]),
     _vm._v(" "),
@@ -1638,7 +1639,7 @@ var render = function() {
       _c("span", { staticClass: "thread--las-update" }, [
         _vm._v(
           "\n            " +
-            _vm._s(_vm._f("fromNow")(_vm.item.updated_at)) +
+            _vm._s(_vm._f("nitFromNow")(_vm.item.updated_at)) +
             "\n        "
         )
       ])
@@ -1742,6 +1743,274 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Message__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Message__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reply__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Reply___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Reply__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        NitMessage: __WEBPACK_IMPORTED_MODULE_1__Message___default.a,
+        NitReply: __WEBPACK_IMPORTED_MODULE_2__Reply___default.a
+    },
+    data: function data() {
+        return {
+            initialLoading: false,
+            loading: false,
+            thread: null
+        };
+    },
+    computed: {
+        mainMessage: function mainMessage() {
+            return this.thread.messages[0] || null;
+        },
+        messages: function messages() {
+            var messages = _.cloneDeep(this.thread.messages);
+            messages.shift();
+            return messages;
+        }
+    },
+    created: function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return this.getThread();
+
+                        case 2:
+                            this.initialLoading = false;
+
+                        case 3:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, this);
+        }));
+
+        function created() {
+            return _ref.apply(this, arguments);
+        }
+
+        return created;
+    }(),
+
+    methods: {
+        getThread: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                _context2.next = 2;
+                                return Nova.request().get('/nova-vendor/nova-inbox-tool/message-threads/' + this.$route.params.id);
+
+                            case 2:
+                                response = _context2.sent;
+
+                                this.thread = response.data;
+
+                            case 4:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function getThread() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return getThread;
+        }(),
+        messageCreated: function messageCreated(message) {
+            this.thread.messages.push(message);
+        }
+    }
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "loading-view",
+    { attrs: { loading: _vm.initialLoading } },
+    [
+      _c("heading", { staticClass: "mb-3" }, [
+        _vm._v("Thread ID: " + _vm._s(_vm.$route.params.id))
+      ]),
+      _vm._v(" "),
+      _vm.thread
+        ? _c(
+            "card",
+            { staticClass: "py-3 px-6" },
+            [
+              _c(
+                "div",
+                { staticClass: "flex flex-col pb-4 border-b border-40" },
+                [
+                  _c("div", { staticClass: "font-bold text-xl mb-2" }, [
+                    _vm._v(_vm._s(_vm.thread.subject))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", {
+                    domProps: { innerHTML: _vm._s(_vm.thread.body) }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex items-center mt-4" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(
+                              _vm._f("nitInitials")(_vm.thread.member.name)
+                            ) +
+                            "\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-sm" }, [
+                      _c("p", { staticClass: "text-black leading-none" }, [
+                        _vm._v(_vm._s(_vm.thread.member.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-grey-dark" }, [
+                        _vm._v(
+                          _vm._s(_vm._f("nitFromNow")(_vm.thread.created_at))
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.messages, function(message) {
+                return _c("nit-message", {
+                  key: message.id,
+                  attrs: { item: message }
+                })
+              }),
+              _vm._v(" "),
+              _c("nit-reply", { on: { messageCreated: _vm.messageCreated } })
+            ],
+            2
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-372a0db8", module.exports)
+  }
+}
+
+/***/ }),
+/* 35 */,
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(37)
+/* template */
+var __vue_template__ = __webpack_require__(38)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/thread/Reply.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4d722bd0", Component.options)
+  } else {
+    hotAPI.reload("data-v-4d722bd0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -1772,6 +2041,222 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            reply: null,
+            errors: []
+        };
+    },
+    methods: {
+        addReply: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.prev = 0;
+                                _context.next = 3;
+                                return Nova.request().post('/nova-vendor/nova-inbox-tool/message-threads/' + this.$route.params.id + '/messages', { body: this.reply });
+
+                            case 3:
+                                _context.next = 5;
+                                return _context.sent;
+
+                            case 5:
+                                response = _context.sent;
+
+
+                                this.$toasted.show(this.__('The message was created!'), { type: 'success' });
+
+                                this.$emit('messageCreated', response.data);
+
+                                this.errors = [];
+
+                                this.reply = null;
+
+                                _context.next = 15;
+                                break;
+
+                            case 12:
+                                _context.prev = 12;
+                                _context.t0 = _context['catch'](0);
+
+                                if (_context.t0 && _context.t0.response.status == 422) {
+                                    this.errors = _context.t0.response.data.errors;
+                                }
+
+                            case 15:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this, [[0, 12]]);
+            }));
+
+            function addReply() {
+                return _ref.apply(this, arguments);
+            }
+
+            return addReply;
+        }()
+    }
+});
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "mt-6",
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.addReply($event)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "flex flex-wrap mb-4" }, [
+        _c(
+          "label",
+          {
+            staticClass:
+              "block font-bold mb-2 text text-grey-darker tracking-wide uppercase"
+          },
+          [_vm._v("\n            " + _vm._s(_vm.__("Reply")) + "\n        ")]
+        ),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.reply,
+              expression: "reply"
+            }
+          ],
+          staticClass:
+            "appearance-none block border border-60 leading-tight px-4 py-4 rounded w-full",
+          class: { "border-danger": _vm.errors.body },
+          attrs: { cols: "30", rows: "10", placeholder: "Type to reply..." },
+          domProps: { value: _vm.reply },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.reply = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.errors.body
+          ? _c(
+              "div",
+              { staticClass: "help-text error-text mt-2 text-danger" },
+              [
+                _vm._v(
+                  "\n            " + _vm._s(_vm.errors.body[0]) + "\n        "
+                )
+              ]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default btn-primary",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("\n            " + _vm._s(_vm.__("Submit")) + "\n        ")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4d722bd0", module.exports)
+  }
+}
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(15)
+/* script */
+var __vue_script__ = __webpack_require__(40)
+/* template */
+var __vue_template__ = __webpack_require__(41)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/thread/Message.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6098b226", Component.options)
+  } else {
+    hotAPI.reload("data-v-6098b226", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1781,85 +2266,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    filters: {
-        fromNow: function fromNow(value) {
-            return moment(value).fromNow();
+    props: {
+        item: {
+            type: Object,
+            required: true
         }
-    },
-    data: function data() {
-        return {
-            initialLoading: false,
-            loading: false,
-            thread: null
-        };
-    },
-    computed: {
-        shouldShowToolbar: function shouldShowToolbar() {
-            return true;
-        }
-    },
-    created: function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return this.getThread();
-
-                        case 2:
-                            this.initialLoading = false;
-
-                        case 3:
-                        case "end":
-                            return _context.stop();
-                    }
-                }
-            }, _callee, this);
-        }));
-
-        function created() {
-            return _ref.apply(this, arguments);
-        }
-
-        return created;
-    }(),
-
-    methods: {
-        getThread: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var response;
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.next = 2;
-                                return Nova.request().get("/nova-vendor/nova-inbox-tool/message-threads/" + this.$route.params.id);
-
-                            case 2:
-                                response = _context2.sent;
-
-                                this.thread = response.data;
-
-                            case 4:
-                            case "end":
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function getThread() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return getThread;
-        }()
     }
 });
 
 /***/ }),
-/* 34 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1867,84 +2283,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "loading-view",
-    { attrs: { loading: _vm.initialLoading } },
+    "div",
+    { staticClass: "flex items-top ml-8 py-8 border-b border-40" },
     [
-      _c("heading", { staticClass: "mb-3" }, [
-        _vm._v("Thread ID: " + _vm._s(_vm.$route.params.id))
+      _c("div", [
+        _c(
+          "span",
+          {
+            staticClass:
+              "bg-50 border border-70 flex font-black h-12 items-center justify-center mr-4 rounded-full text-80 w-12"
+          },
+          [
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm._f("nitInitials")(_vm.item.sender.name)) +
+                "\n        "
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
-      _vm.thread
-        ? _c("card", { staticClass: "p-4" }, [
-            _c("div", { staticClass: "thread-details" }, [
-              _c(
-                "div",
-                { staticClass: "thread-details--subject" },
-                [
-                  _c("srong", [_vm._v("Subject")]),
-                  _vm._v(": " + _vm._s(_vm.thread.subject) + "\n            ")
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "thread-details--member" },
-                [
-                  _vm._v("\n                Posted by "),
-                  _c("srong", [_vm._v(_vm._s(_vm.thread.member.name))]),
-                  _vm._v(" on "),
-                  _c("strong", [
-                    _vm._v(_vm._s(_vm._f("fromNow")(_vm.thread.created_at)))
-                  ])
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "thread-messages" },
-              _vm._l(_vm.thread.messages, function(message) {
-                return _c(
-                  "div",
-                  { key: message.id, staticClass: "t-message" },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "t-message--sender" },
-                      [
-                        _vm._v("\n                    Sent by "),
-                        _c("srong", [_vm._v(_vm._s(message.sender.name))]),
-                        _vm._v(" on "),
-                        _c("strong", [
-                          _vm._v(_vm._s(_vm._f("fromNow")(message.created_at)))
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "t-message--body" }, [
-                      _c("div", {
-                        domProps: { innerHTML: _vm._s(message.body) }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("hr")
-                  ]
-                )
-              })
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "thread-reply" }, [
-              _c("h4", [_vm._v("reply feature")])
-            ])
-          ])
-        : _vm._e()
-    ],
-    1
+      _c("div", {}, [
+        _c("div", {
+          staticClass: "t-message--body",
+          domProps: { innerHTML: _vm._s(_vm.item.body) }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-grey-dark mt-4 text-sm" }, [
+          _vm._v(
+            "\n            Sent by " +
+              _vm._s(_vm.item.sender.name) +
+              " " +
+              _vm._s(_vm._f("nitFromNow")(_vm.item.created_at)) +
+              "\n        "
+          )
+        ])
+      ])
+    ]
   )
 }
 var staticRenderFns = []
@@ -1953,9 +2328,34 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-372a0db8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6098b226", module.exports)
   }
 }
+
+/***/ }),
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return nitDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return nitFromNow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return nitInitials; });
+var nitDate = function nitDate(value, format) {
+    return moment.utc(value).tz(moment.tz.guess()).format(format);
+};
+
+var nitFromNow = function nitFromNow(value) {
+    return moment.utc(value).tz(moment.tz.guess()).fromNow();
+};
+
+var nitInitials = function nitInitials(value) {
+    var initials = value.match(/\b\w/g) || [];
+    initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+    return initials.trim();
+};
 
 /***/ })
 /******/ ]);

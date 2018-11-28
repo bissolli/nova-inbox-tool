@@ -16,11 +16,11 @@
             <span class="thread--subject">
                 {{ item.subject }}
             </span>
-            <small class="block font-thin-3">{{ item.created_at | date('LLLL') }}</small>
+            <small class="block font-thin-3">{{ item.created_at | nitDate('LLLL') }}</small>
         </td>
         <td class="text-center">
             <span class="thread--las-update">
-                {{ item.updated_at | fromNow }}
+                {{ item.updated_at | nitFromNow }}
             </span>
         </td>
         <td class="text-center">
@@ -41,14 +41,6 @@
 <script>
 
     export default {
-        filters: {
-            date (value, format) {
-                return moment(value).format(format)
-            },
-            fromNow (value) {
-                return moment(value).fromNow()
-            }
-        },
         props: {
             item: {
                 type: Object,

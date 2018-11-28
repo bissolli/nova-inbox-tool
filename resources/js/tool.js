@@ -1,4 +1,11 @@
+import * as filters from './filters.js'
+
 Nova.booting((Vue, router) => {
+
+    Vue.filter('nitDate', filters.nitDate)
+    Vue.filter('nitFromNow', filters.nitFromNow)
+    Vue.filter('nitInitials', filters.nitInitials)
+
     router.addRoutes([
         {
             name: 'nova-inbox-tool.inbox',

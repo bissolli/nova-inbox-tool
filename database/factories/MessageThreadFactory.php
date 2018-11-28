@@ -15,6 +15,7 @@ use Faker\Generator as Faker;
 $factory->define(\Bissolli\NovaInboxTool\Models\MessageThread::class, function (Faker $faker) {
     return [
         'member_id' => \App\User::inRandomOrder()->first()->id,
-        'subject' => $faker->sentence(4)
+        'subject' => $faker->sentence(4),
+        'body' => $faker->text(500)
     ];
 });
