@@ -14,17 +14,23 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(\Bissolli\NovaInboxTool\Models\Message::class, function (Faker $faker) {
-    $models = [
-        'App\User'
-    ];
-
+    $models = config('novainbox.models');
     shuffle($models);
 
+    $seenMember = $models[0] == config('novainbox.models.member')
+        ? \Carbon\Carbon::now()
+        : null;
+
+    $seenAdmin = $models[0] == config('novainbox.models.admin')
+        ? \Carbon\Carbon::now()
+        : null;
+
     return [
-        'message_thread_id' => \Bissolli\NovaInboxTool\Models\MessageThread::inRandomOrder()->first()->id,
+        'thread_id' => \Bissolli\NovaInboxTool\Models\Thread::inRandomOrder()->first()->id,
         'sender_id' => (new $models[0]())->inRandomOrder()->first()->id,
         'sender_type' => $models[0],
-        'body' => $faker->text(500),
-        'seen_at' => null,
+        'body' => $faker->text(rand(100, 500)),
+        'seen_by_member_at' => $seenMember,
+        'seen_by_admin_at' => $seenAdmin,
     ];
 });

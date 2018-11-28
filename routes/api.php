@@ -19,12 +19,13 @@ Route::group(['namespace' => '\Bissolli\NovaInboxTool\Http\Controllers'], functi
     // Inbox routes
     Route::get('inbox', 'InboxController@index');
 
-    // Thread routes
-    //Route::get('messages-threads', 'MessageThreadController@search');
-    //Route::post('messages-threads', 'MessageThreadController@store');
-    Route::get('message-threads/{thread}', 'MessageThreadController@show');
-    //Route::delete('messages-threads/{message-thread}', 'MessageThreadController@destroy');
+    // Threads routes
+    Route::get('message-threads/{thread}', 'ThreadController@show');
+    //Route::get('messages-threads', 'ThreadController@search');
+    //Route::post('messages-threads', 'ThreadController@store');
+    //Route::delete('messages-threads/{message-thread}', 'ThreadController@destroy');
 
+    // Thread messages routes
     Route::post('message-threads/{thread}/messages', 'MessageController@store');
 
     // Message routes

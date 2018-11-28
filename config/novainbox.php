@@ -7,11 +7,12 @@ return [
     |--------------------------------------------------------------------------
     */
     'tables' => [
-        'message_threads' => 'message_threads',
+        'threads' => 'threads',
         'messages' => 'messages',
-        'message_views' => 'message_views',
     ],
 
-    'user_model' => \App\User::class,
-    'admin_model' => \App\User::class,
+    'models' => [
+        'admin' => \App\User::class,
+        'member' => \App\Member::class,
+    ]
 ];

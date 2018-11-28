@@ -1166,6 +1166,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
 
 
 
@@ -1448,6 +1451,12 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
+                          _c("th", { staticClass: "text-left" }, [
+                            _vm._v(
+                              "\n                        Status\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
                           _c("th")
                         ])
                       ]),
@@ -1569,12 +1578,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1582,15 +1585,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         item: {
             type: Object,
             required: true
-        }
-    },
-    computed: {
-        unreadMessages: function unreadMessages() {
-            var unread = 0;
-            this.item.messages.map(function (obj) {
-                if (!obj.seen_at) unread++;
-            });
-            return unread;
         }
     }
 });
@@ -1603,46 +1597,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", { class: { "thread--unread-line": _vm.unreadMessages } }, [
+  return _c("tr", [
     _c("td", { staticClass: "w-16 text-center" }, [
       _vm._v("\n        " + _vm._s(_vm.item.id) + "\n    ")
     ]),
     _vm._v(" "),
-    _c("td", [
-      _vm.unreadMessages
-        ? _c(
-            "small",
-            {
-              staticClass:
-                "bg-danger font-bold px-2 mr-1 rounded-full text-white uppercase"
-            },
-            [_vm._v(_vm._s(_vm.unreadMessages))]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("span", { staticClass: "thread--member" }, [
-        _vm._v("\n            " + _vm._s(_vm.item.member.name) + "\n        ")
-      ])
-    ]),
+    _c("td", [_vm._v("\n        " + _vm._s(_vm.item.member.name) + "\n    ")]),
     _vm._v(" "),
     _c("td", [
-      _c("span", { staticClass: "thread--subject" }, [
-        _vm._v("\n            " + _vm._s(_vm.item.subject) + "\n        ")
-      ]),
-      _vm._v(" "),
+      _vm._v("\n        " + _vm._s(_vm.item.subject) + "\n        "),
       _c("small", { staticClass: "block font-thin-3" }, [
         _vm._v(_vm._s(_vm._f("nitDate")(_vm.item.created_at, "LLLL")))
       ])
     ]),
     _vm._v(" "),
     _c("td", { staticClass: "text-center" }, [
-      _c("span", { staticClass: "thread--las-update" }, [
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm._f("nitFromNow")(_vm.item.updated_at)) +
-            "\n        "
-        )
+      _c("small", { staticClass: "font-thin-3" }, [
+        _vm._v(_vm._s(_vm._f("nitFromNow")(_vm.item.updated_at)))
       ])
+    ]),
+    _vm._v(" "),
+    _c("td", { staticClass: "text-center" }, [
+      !_vm.item.closed_at
+        ? _c("span", [_vm._v(" Open ")])
+        : _c("span", { staticClass: "text-success" }, [_vm._v(" Solved ")])
     ]),
     _vm._v(" "),
     _c(

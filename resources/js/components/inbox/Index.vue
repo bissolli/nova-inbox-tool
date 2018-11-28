@@ -74,6 +74,9 @@
                         <th class="text-left">
                             Updated at
                         </th>
+                        <th class="text-left">
+                            Status
+                        </th>
                         <th></th>
                     </tr>
                     </thead>

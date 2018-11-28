@@ -1,27 +1,21 @@
 <template>
-    <tr :class="{ 'thread--unread-line': unreadMessages }">
+    <tr>
         <td class="w-16 text-center">
             {{ item.id }}
         </td>
         <td>
-            <small
-                v-if="unreadMessages"
-                class="bg-danger font-bold px-2 mr-1 rounded-full text-white uppercase"
-            >{{ unreadMessages }}</small>
-            <span class="thread--member">
-                {{ item.member.name }}
-            </span>
+            {{ item.member.name }}
         </td>
         <td>
-            <span class="thread--subject">
-                {{ item.subject }}
-            </span>
+            {{ item.subject }}
             <small class="block font-thin-3">{{ item.created_at | nitDate('LLLL') }}</small>
         </td>
         <td class="text-center">
-            <span class="thread--las-update">
-                {{ item.updated_at | nitFromNow }}
-            </span>
+            <small class="font-thin-3">{{ item.updated_at | nitFromNow }}</small>
+        </td>
+        <td class="text-center">
+            <span v-if="!item.closed_at"> Open </span>
+            <span v-else class="text-success"> Solved </span>
         </td>
         <td class="text-center">
             <router-link
@@ -46,16 +40,6 @@
                 type: Object,
                 required: true
             }
-        },
-        computed: {
-            unreadMessages() {
-                let unread = 0
-                this.item.messages.map((obj) => {
-                    if (!obj.seen_at)
-                        unread++
-                })
-                return unread
-            },
         }
     }
 </script>

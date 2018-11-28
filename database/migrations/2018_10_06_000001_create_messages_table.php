@@ -15,11 +15,12 @@ class CreateMessagesTable extends Migration
     {
         Schema::create(config('novainbox.tables.messages'), function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('message_thread_id');
+            $table->unsignedInteger('thread_id');
             $table->unsignedInteger('sender_id');
             $table->string('sender_type');
             $table->text('body');
-            $table->timestamp('seen_at')->nullable();
+            $table->timestamp('seen_by_member_at')->nullable()->nullable();
+            $table->timestamp('seen_by_admin_at')->nullable()->nullable();
             $table->timestamps();
         });
     }
