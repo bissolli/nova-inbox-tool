@@ -2,13 +2,18 @@
     <loading-view :loading="initialLoading">
         <heading class="mb-3">Thread ID: {{ $route.params.id }}</heading>
         <card class="py-3 px-6" v-if="thread">
+            <div class="bg-50 border-b border-t mb-4 px-4 py-3"
+                 role="alert">
+                <p class="font-bold">{{ __('Member') }}</p>
+                <p class="text-sm">{{ thread.member.name }}</p>
+            </div>
             <div class="flex flex-col pb-4 border-b border-40">
                 <div class="font-bold text-xl mb-2">{{ thread.subject }}</div>
                 <div v-html="thread.body"></div>
                 <div class="flex items-center mt-4">
                     <nit-avatar :name="thread.owner.name" :model="thread.owner_type" />
                     <div class="text-sm">
-                        <p class="text-black leading-none">{{ thread.member.name }}</p>
+                        <p class="text-black leading-none">{{ thread.owner.name }}</p>
                         <p class="text-grey-dark">{{ thread.created_at | nitFromNow }}</p>
                     </div>
                 </div>
