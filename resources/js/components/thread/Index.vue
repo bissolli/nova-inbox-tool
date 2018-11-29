@@ -40,15 +40,11 @@
             loading: false,
             thread: null,
         }),
-        computed: {
-            mainMessage() {
-                return this.thread.messages[ 0 ] || null
-            }
-        },
         async created() {
             await this.getThread()
             this.initialLoading = false
         },
+
         methods: {
             async getThread() {
                 let response = await Nova.request().get(`/nova-vendor/nova-inbox-tool/message-threads/${this.$route.params.id}`)
