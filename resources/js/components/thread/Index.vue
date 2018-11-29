@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <nit-message v-for="message in messages" :key="message.id" :item="message" />
+            <nit-message v-for="message in thread.messages" :key="message.id" :item="message" />
             <nit-reply @messageCreated="messageCreated" />
         </card>
     </loading-view>
@@ -38,12 +38,7 @@
         computed: {
             mainMessage() {
                 return this.thread.messages[ 0 ] || null
-            },
-            messages() {
-                let messages = _.cloneDeep(this.thread.messages)
-                messages.shift()
-                return messages
-            },
+            }
         },
         async created() {
             await this.getThread()
