@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->table = config('novainbox.tables.messages');
+    }
+
     protected $fillable = [
         'message_thread_id',
         'sender_id',

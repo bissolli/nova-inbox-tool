@@ -17,6 +17,13 @@ class Thread extends Model
         'body',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->table = config('novainbox.tables.threads');
+    }
+
     public function owner()
     {
         return $this->morphTo(null, 'owner_type', 'owner_id');
