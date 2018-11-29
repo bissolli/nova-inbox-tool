@@ -24,7 +24,7 @@ class ToolServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/novainbox.php' => config_path('novainbox.php'),
-        ], 'nova-inbox-tool-config');
+        ], 'nova-inbox-tool');
 
         $this->app->booted(function () {
             $this->routes();
