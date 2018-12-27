@@ -22,6 +22,11 @@ class Message extends Model
         'seen_by_admin_at',
     ];
 
+    protected $dates = [
+        'seen_by_member_at',
+        'seen_by_admin_at'
+    ];
+
     public function thread()
     {
         return $this->belongsTo(Thread::class);

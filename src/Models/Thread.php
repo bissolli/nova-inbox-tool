@@ -17,6 +17,10 @@ class Thread extends Model
         'body',
     ];
 
+    protected $dates = [
+        'closed_at'
+    ];
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
